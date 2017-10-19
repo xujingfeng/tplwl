@@ -1,0 +1,84 @@
+{extend name='base/base'}
+{block name='content'}
+    <h4 class="btn btn-primary">添加分类</h4>
+    <br/><br/>
+    <table class="table">
+
+        <tr align="center">
+            <td class="active" style="width: 120px">
+                <select id="sel" class="form-control" style="width: 120px">
+                    <option value="0">主分类</option>
+                    {foreach $arr1 as $v}
+                        <option    value="{$v['id']}">{$v['num']|str_repeat='->',###}  {$v['title']}</option>
+                    {/foreach}
+                </select>
+            </td>
+            <td class="success" style="width: 120px">
+                <input type="text"  class="form-control" name="title" style="width: 150px">
+            </td>
+            <td class="warning" style="width: 120px;cursor: pointer;" id='addclass' >添加子级分类</td>
+        </tr>
+    </table>
+{/block}
+{block name='js'}
+    <script type="text/javascript">
+        $(function(){
+            id=0;
+            $("select").change(function(){
+                id=$(this).val();
+            });
+            name ='';
+            $("input").change(function(){
+                name=$(this).val();
+            });
+            $('#addclass').hover(function(){
+                $('#addclass').css('color','green');
+            });
+            $('#addclass').mouseout(function(){
+                $('#addclass').css('color','');
+            });
+            $('#addclass').click(function(){
+
+                $.ajax({
+                    type:'post',
+                    url:'assort',
+                    dataType:'json',
+                    data:{
+                        ids:id,
+                        names:name
+                    },
+                    success:function(data)
+                    {
+                    	var datas=JSON.parse(data);
+                        if(datas.status==1)
+                                {
+                                    alert('添加成功');
+                                    window.location.assign('assort');
+                                }
+                    },
+                    beforeSend:function()
+                    {
+                                if(name=='')
+                                        {
+                                            alert('商品类别不能为空');
+                                            return false;
+                                        }
+                    }
+                });
+            });
+        });
+        $("#sel").focus(function()
+        {
+            $("#sel").attr("size","12");
+        });
+        $("option").click(function()
+        {
+            $("#sel").removeAttr("size");
+            $("#sel").blur();
+            $("option").attr("selected");
+        });
+        $("#sel").blur(function(){
+          $("#sel").removeAttr("size");
+        })
+    </script>
+{/block}

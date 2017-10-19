@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div><img onclick="jjj()" id='img' src="{:captcha_src()}" alt=""></div>
+	<form action="hhh">
+      <input type="text" name='yanzheng'>验证码<br>
+      <input type="text" name='name'>姓名<br>
+      <input type="text" name='age'>年龄<br> 
+      <input type="submit" value='登录'>
+	</form>
+	<script>
+      function jjj()
+      {
+      	document.getElementById('img').src='{:captcha_src()}?a='+Math.random()*10000;
+      }
+	</script>
+</body>
+</html>

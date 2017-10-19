@@ -1,0 +1,40 @@
+{extend name='base/base'}
+{block name='content'}
+<table id='tb' class="table table-bordered">
+      <tr align="center" >
+      	<th width="1%">序号</th>
+      	<th width='10%'>类别</th>
+      	<th width="15%">名称</th>
+      	<th width="15%">出版社</th>
+      	<th width="10%">作者</th>
+      	<th width="8%">缩略图</th>
+      	<th width="2%">库存</th>
+      	<th width="6%">价格</th>
+      	<th width="20%">描述</th>
+      	<th width="15%" colspan="2">操作</th>
+      </tr>
+      {foreach $arr as $v}
+      <tr align="center" >
+      	  <td class="active" style="line-height: 70px;">{$v['bookId']}</td>
+      	  <td class="warning" style="line-height: 70px;">{$v['title']}</td>
+		  <td class="success" style="line-height: 70px;">{$v['bookName']}</td>
+		  <td class="warning" style="line-height: 70px;">{$v['publisher']}</td>
+		  <td class="danger" style="line-height: 70px;">{$v['author']}</td>
+		  <td class="info"><img src="__STATIC__/../uploads/{$v['bookImage']}" width="70px" height="70px"></td>
+		  <td class="danger" style="line-height: 70px;">{$v['num']}</td>
+		  <td class="danger" style="line-height: 70px;">{$v['price']}</td>
+		  <td class="danger" style="line-height: 70px;">{$v['detail']}</td>
+		  <td class="info" style="line-height: 70px;"><a href="huanyuan?bookId={$v['bookId']}">还原</a></td>
+		  <td class="info" style="line-height: 70px;"><a href="qingchu?bookId={$v['bookId']}" onclick="return del()">清除</a></td>
+      </tr>
+      {/foreach}
+  </table>
+{/block}
+{block name='js'}
+<script type="text/javascript">
+	function del()
+    {
+    	return confirm('确定要删除吗？');
+    }
+</script>
+{/block}

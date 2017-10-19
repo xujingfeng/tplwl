@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	{$aaaaa}
+	{foreach $data as $vv}
+	 {foreach $vv as $v}
+	 {$v}
+	 {/foreach}
+	{/foreach}
+	<form action="ccc/jj" method="post"> 
+		 <input type="text" name="name">
+		 <input type="text" name="age">
+		 <input type="submit" value="提交" >
+	</form>
+	<p>模板中的替换</p>
+	__STATIC__
+	<hr/>
+	__ROOT__
+	<hr/>
+	__JS__
+	<hr/>
+	__CSS__
+	{volist name='data' id='vo'}
+	<p>
+	   编号：{$vo.uid}
+	   姓名：{$vo.uname}
+	   性别：{$vo.usex}
+	</p>
+	{/volist}
+</body>
+</html>

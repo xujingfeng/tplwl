@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/login.css">
+	<script type="text/javascript" src="__STATIC__/js/jquery-3.2.1.js" ></script>
+	<script type="text/javascript" src="__STATIC__/js/bootstrap.js" ></script>
+	<style type="text/css">
+.sky {
+  height:100%;
+  background: #007fd5;
+  position: relative;
+  overflow: hidden;
+  /*
+    webkit-animation:动画属性;
+    Internet Explorer 10、Firefox 以及 Opera 支持 animation 属性。
+    Safari 和 Chrome 支持替代的 -webkit-animation 属性。
+    注释：Internet Explorer 9 以及更早的版本不支持 animation 属性。
+  */
+  /*
+  linear:线性渐变（Linear Gradients）- 向下/向上/向左/向右/对角方向
+  径向渐变（Radial Gradients）- 由它们的中心定义 
+  */
+  /*
+  infinite:使用简写属性把 animation 绑定到一个<div> 元素
+  */
+  /*
+  ease:默认。动画以低速开始，然后加快，在结束前变慢。;
+  ease-in:动画以低速开始。;
+  ease-out:动画以低速结束。; 
+  ease-in-out:动画以低速开始和结束。;
+  */
+  -webkit-animation: sky_background 50s ease-out infinite;
+  -moz-animation: sky_background 50s ease-out infinite;
+  -o-animation: sky_background 50s ease-out infinite;
+  animation: sky_background 50s ease-out infinite;
+  /*
+  translate3d(x,y,z):定义 3D 转化。;
+  */
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.clouds_one {
+  background: url("__STATIC__/images/cloud_one.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+  -webkit-animation: cloud_one 50s linear infinite;
+  -moz-animation: cloud_one 50s linear infinite;
+  -o-animation: cloud_one 50s linear infinite;
+  animation: cloud_one 50s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.clouds_two {
+  background: url("__STATIC__/images/cloud_two.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+  -webkit-animation: cloud_two 75s linear infinite;
+  -moz-animation: cloud_two 75s linear infinite;
+  -o-animation: cloud_two 75s linear infinite;
+  animation: cloud_two 75s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.clouds_three {
+  background: url("__STATIC__/images/cloud_three.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+  -webkit-animation: cloud_three 100s linear infinite;
+  
+  -moz-animation: cloud_three 100s linear infinite;
+  -o-animation: cloud_three 100s linear infinite;
+  animation: cloud_three 100s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+/*@keyframes 规则用于创建动画。在 @keyframes 中规定某项 CSS 样式，就能创建由当前样式逐渐改为新样式的动画效果。
+Internet Explorer 10、Firefox 以及 Opera 支持 @keyframes 规则和 animation 属性。
+Chrome 和 Safari 需要前缀 -webkit-。
+div
+{
+animation: myfirst 5s;
+-moz-animation: myfirst 5s;  //Firefox 
+-webkit-animation: myfirst 5s;   //Safari 和 Chrome 
+-o-animation: myfirst 5s; //Opera 
+}
+*/
+@-webkit-keyframes sky_background {
+  0% {
+	background: #007fd5;
+	color: #007fd5
+  }
+  50% {
+	background: #000;
+	color: #a3d9ff
+  }
+  100% {
+	background: #007fd5;
+	color: #007fd5
+  }
+}
+@-moz-keyframes sky_background {
+  0% {
+	background: #007fd5;
+	color: #007fd5
+  }
+  50% {
+	background: #000;
+	color: #a3d9ff
+  }
+  100% {
+	background: #007fd5;
+	color: #007fd5
+  }
+}
+@keyframes sky_background {
+  0% {
+	background: #007fd5;
+	color: #007fd5
+  }
+  50% {
+	background: #000;
+	color: #a3d9ff
+  }
+  100% {
+	background: #007fd5;
+	color: #007fd5
+  }
+}
+
+@-webkit-keyframes cloud_one {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@-moz-keyframes cloud_one {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@keyframes cloud_one {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+
+@-webkit-keyframes cloud_two {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@-moz-keyframes cloud_two {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@keyframes cloud_two {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+
+@-webkit-keyframes cloud_three {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@-moz-keyframes cloud_three {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+@keyframes cloud_three {
+  0% {
+	left: 0
+  }
+  100% {
+	left: -200%
+  }
+}
+	</style>
+</head>
+<body>
+    <div class="sky">
+	     <div class="clouds_one"></div>
+	     <div class="clouds_two"></div>
+	     <div class="clouds_three"></div>
+	     <div  class="container">
+	<div class="row ">
+		  <div class="col-md-2"></div>
+		  <div class="col-md-8 sss">
+		  	<div class="cont">
+		  		  <div>
+                     <h1><font style='font-family:华文新魏;color:red'>登录后台页面</font></h1>
+		  		  </div>
+		  	  <form class="form-horizontal " action="" method="post" id='form'>
+				  <div class="form-group">
+				    <label for="inputEmail3" class="col-sm-2 control-label" style="color:#000;font-size:16px;">用户名</label>
+				    <div class="col-sm-10">
+				      <input type="text" name='user' class="form-control" id="inputEmail3" placeholder="用户名" style='height:50px;'>
+				      <span class='ddd' id='ids'></span>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword3" class="col-sm-2 control-label" style="color:#000;font-size:16px;">密码</label>
+				    <div class="col-sm-10">
+				      <input type="password" name='pwd' class="form-control" id="inputPassword3" placeholder="Password" style='height:50px;'>
+				      <span class='ddd' id='pwd'></span>
+				    </div>
+				  </div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label" style="color:#000;font-size:16px;">验证码</label>
+					<div class="col-sm-10">
+				       <img id="img" src="{:captcha_src()}" alt="captcha" style="height: 50px;" />
+				       <input id='yz' type="text" name="captcha" style="height: 50px;color:#000;">
+				       <br>
+				       <span class='ddd' id='yzm'></span>
+				       <a onclick="jjj()" style='font-size:18px;color:#000;cursor:pointer;'>看不清，点击换一张</a>
+				    </div>
+				</div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <div class="checkbox">
+				        <label style='color:#000;'>
+				          <input type="checkbox" >记住密码
+				        </label>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <button type="button" onclick="sub()" class="btn btn-default" style='color:#000;'>登录</button>
+				    </div>
+				  </div>
+				 </form>
+				</div>
+
+		  </div>
+		  <div class="col-md-2"></div>
+	</div>
+</div>
+        </div>
+	
+	<script type="text/javascript">
+		 function jjj()
+		 {    
+		 	document.getElementById('img').src="{:captcha_src()}?a="+Math.random()*10000; 
+		 	var ss="{:captcha_src()}?a="+Math.random()*10000;
+		 	yz.select();
+		 	console.log(ss);
+		 	
+		 }
+		 function sub()
+		 {
+             $.ajax({
+             	  type:'post',
+             	  url:'login',
+             	  data:$('form').serialize(),
+             	  success:function(data)
+             	  {
+                      var datas=JSON.parse(data); 
+                      if(datas.status==1){
+                          window.location.assign('article');
+                          return;
+                      }
+                      if(datas.status==0){
+                          alert('用户名或密码错误');
+                          return;
+                      }
+                      $('#ids').html(datas.user);
+                      $('#pwd').html(datas.pwd);
+                      $('#yzm').html(datas.captcha);
+
+             	  }
+             });
+		 }
+	</script>
+</body>
+</html>

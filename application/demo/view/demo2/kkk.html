@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fenye</title>
+	<style>
+        ul{list-style:none;}
+        li{float:left;width:5%;}
+	</style>
+</head>
+<body>
+    {foreach $res as $vv}
+      {foreach $vv as $v}
+       {$v}
+      {/foreach}
+    {/foreach}
+	{$page}
+	<br>
+	{$res->render()}
+	&laquo;&raquo;
+</body>
+</html>

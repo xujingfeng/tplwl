@@ -1,0 +1,136 @@
+{extend name='base/base'}
+{block name='content'}
+<form id='form' action="" method="post" enctype="multipart/form-data" style="width: 80%;height: 800px;margin:0px auto 0px auto;font-family:华文新魏">
+            <button disabled="disabled" style="font-family:华文新魏;background-color:#CCCCCC;border-radius: 10px;margin:0px auto 20px auto;padding:10px 20px;color:deeppink;font-size:20px;">选择图书分类</button>
+            <td class="active" style="width: 120px">
+              <select id='sel' class="form-control" style="width: 120px" name='classId'>
+                  <option value="0">主分类</option>
+                   {foreach $arr1 as $v}
+                        <option    value="{$v['id']}">{$v['num']|str_repeat='->',###}  {$v['title']}</option>
+                    {/foreach}
+              </select>
+          </td>
+         <button disabled="disabled" style="font-family:华文新魏;background-color:#CCCCCC;border-radius: 10px;margin:10px auto 20px auto;padding:10px 40px;color:deeppink;font-size:20px">图书添加</button>
+         <br>
+         <span style='font-size:20px;font-weight: bold;'>图书名称</span>
+        <input type="text" class="form-control required"  name="bookName" style="width:20%" ><span id='id1' style="color:red">{if isset($_GET['da'])}{$_GET['da']}{/if}</span><br>
+        <span style='font-size:20px;font-weight: bold;'>图书出版社</span>
+        <input type="text" class="form-control required" name="publisher" style="width:20%"><span id='id2' style="color:red">{if isset($_GET['db'])}{$_GET['db']}{/if}</span><br>
+        <span style='font-size:20px;font-weight: bold;'>图书的作者</span>
+        <input type="text" class="form-control required" name="author" style="width:20%"><span id='id3' style="color:red">{if isset($_GET['dc'])}{$_GET['dc']}{/if}</span><br>
+        <span style='font-size:20px;font-weight: bold;'>图书的价格</span>
+        <input type="text" class="form-control required" name="price" style="width:20%"><span id='id4' style="color:red">{if isset($_GET['dd'])}{$_GET['dd']}{/if}</span><br>
+        <span style='font-size:20px;font-weight: bold;'>图书的库存</span>
+        <input type="text" class="form-control required" name="num" style="width:20%"><span id='id4' style="color:red">{if isset($_GET['dd'])}{$_GET['dd']}{/if}</span><br>
+        <span style='font-size:20px;font-weight: bold;'>图书封面图</span>
+        <input type="file" name="bookImage" onchange='jjj(this)'>
+        <div id="preview">
+            <img id="imghead" width=100 height=100 border=0 src=''>
+        </div>
+        <span style='font-size:20px;font-weight: bold;'>图书的描述</span>
+        <script id="container" name="content" type="text/plain" style="height: 400px;">
+        </script>
+            <input type="submit" value='添加'>
+          </form>
+        
+            <script type="text/javascript" src="__STATIC__/utf8-php/ueditor.config.js"></script>
+            
+            <script type="text/javascript" src="__STATIC__/utf8-php/ueditor.all.js"></script>
+            
+            <script type="text/javascript">
+        var ue = UE.getEditor('container',{
+          autoFloatEnabled: true,
+        
+          autoHeight: false
+        });
+            </script>
+{/block}
+{block name='js'}
+<script type="text/javascript">
+  $("#sel").focus(function()
+    {
+        $("#sel").attr("size","12");
+    });
+    $("option").click(function()
+    {
+        $("#sel").removeAttr("size");
+        $("option").attr("selected");
+        $("#sel").blur();
+    });
+    $("#sel").blur(function(){
+      $("#sel").removeAttr("size");
+    })
+    
+    $(function(){
+             $("#form").validate({
+                  rules:{
+                    bookName:{
+                       required:true,
+                       rangelength:[2,50]
+                    },
+                    price:{
+                       required:true,
+                       number:true
+                    },
+                    num:{
+                       required:true,
+                       digits:true
+                    },
+                    publisher:{
+                       required:true
+                    },
+                    author:{
+                       required:true
+                    }
+                  },
+                  messages:{
+                        bookName:{
+                          required:'商品的名称不能为空', 
+                          rangelength:'商品的长度必须是2-50个字符直接'
+                        },
+                        price:{
+                          required:'必须要填写',
+                          number:'商品的价格格式不正确'
+                        },
+                        num:{
+                           required:'必须要填写数量',
+                           digits:'商品的数量必须是整数'
+                        },
+                        publisher:{
+                          required:'必须要填写数量'
+                        },
+                        author:{
+                          required:'必须要填写数量'
+                        }
+                  }
+
+             });
+        })
+        
+    function sub()
+    {
+      $.ajax({
+                type:'post',
+                url:'inserts',
+                data:$('form').serialize(),
+                success:function(data)
+                {
+                      var datas=JSON.parse(data); 
+                      if(datas.status==1){
+                          window.location.assign('inserts');
+                          return;
+                      }
+                      if(datas.status==0){
+                          alert('添加失败');
+                          return;
+                      }
+                      $('#id1').html(datas.bookName);
+                      $('#id2').html(datas.publisher);
+                      $('#id3').html(datas.author);
+                      $('#id4').html(datas.price);
+
+                }
+             });
+    }
+</script>
+{/block}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>许金凤是个沙比</h1>
+	<form action="{:url('Demo/demo2')}" method="post">
+	<input type="text" name='user'>
+	<input type="submit" name="提交">
+	</form>
+	<form action="demoa2" method="post">
+		<input type="text" name="name">
+		<input type="submit" value="go">
+	</form>
+	{$dd}
+	<br>
+	{foreach $sss as $v}
+	  {$v}
+	{/foreach}
+	<br>
+	{:sssa()}
+</body>
+</html>
